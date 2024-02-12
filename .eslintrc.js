@@ -32,7 +32,7 @@ module.exports = {
         "import/extensions": "off",
         "import/no-extraneous-dependencies": "warn",
         "no-underscore-dangle": "off",
-        "max-len": ["error", { ignoreComments: true, code: 100 }],
+        "max-len": ["error", { ignoreComments: true, code: 120 }],
         "jsx-a11y/no-static-element-interactions": "off",
         "sx-a11y/click-events-have-key-events": "off",
         "jsx-a11y/click-events-have-key-events": "off",
@@ -42,6 +42,8 @@ module.exports = {
         "no-use-before-define": 0,
         "react/no-unstable-nested-components": 0, // fix later
         "global-require": 0,
+        "@typescript-eslint/no-var-requires": 0,
+        "import/no-dynamic-require": 0
     },
     globals: {
         __IS_DEV__: true,

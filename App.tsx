@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StatusBar, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FashionLookPage } from "pages/FashionLookPage";
@@ -20,6 +20,7 @@ export default function App() {
         <SafeAreaProvider>
             <StoreProvider>
                 <AppLoader>
+                    <StatusBar hidden />
                     <NavigationContainer>
                         <Tab.Navigator screenOptions={{
                             headerShown: false,

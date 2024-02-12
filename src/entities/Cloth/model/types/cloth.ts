@@ -1,7 +1,7 @@
 export interface Cloth {
     id: string;
     name: string;
-    img: string;
+    img: number;
     category: string;
 }
 

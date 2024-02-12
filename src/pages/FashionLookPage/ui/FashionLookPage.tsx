@@ -4,6 +4,7 @@ import {
 import FrontTab from "shared/assets/icons/FrontTab.svg";
 import { useFonts } from "expo-font";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useNavigation } from "@react-navigation/native";
 
 const FashionLookPage = () => {
     const { width } = useWindowDimensions();
