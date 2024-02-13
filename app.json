@@ -32,7 +32,8 @@
         "expo-font",
         {
           "fonts": [
-            "./src/shared/assets/fonts/Lekton-Bold.ttf"
+            "./src/shared/assets/fonts/Lekton-Bold.ttf",
+            "./src/shared/assets/fonts/IBMPlexSans-Regular.ttf"
           ]
         }
       ]

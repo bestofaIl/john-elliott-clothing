@@ -74,16 +74,16 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     tabBarContainer: {
+        paddingHorizontal: "5%",
         backgroundColor: "#333333",
         height: 146,
         alignItems: "center",
         justifyContent: "center",
-        borderWidth: 0,
         borderTopWidth: 0,
     },
-    temp: {
-        flex: 1,
-        backgroundColor: "black",
-        padding: 0,
-    },
+    // temp: {
+    //     flex: 1,
+    //     backgroundColor: "black",
+    //     padding: 0,
+    // },
 });

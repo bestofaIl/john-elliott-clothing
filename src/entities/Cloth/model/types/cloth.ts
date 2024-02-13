@@ -13,17 +13,8 @@ export interface Cloth {
     isYesterdayFashion?: Boolean;
 }
 
-// export interface StrictCloth<T extends ClothCategory> {
-//     id: string;
-//     name: string;
-//     img: number;
-//     category: T;
-//     isTodayFashion?: Boolean;
-//     isYesterdayFashion?: Boolean;
-// }
-
 export interface ClothSchema {
     entities: Array<Cloth>;
-    isLoading?: boolean;
+    isLoading: boolean;
     error?: string;
 }

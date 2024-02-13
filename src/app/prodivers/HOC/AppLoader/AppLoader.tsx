@@ -4,15 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { getClothLoadingStatus } from "entities/Cloth/model/selectors/getClothList/getCloth";
 import { Text } from "react-native";
 import { useFonts } from "expo-font";
+import { getTipLoadingStatus } from "entities/Tip/model/selectors/getTipList/getTipList";
+import { loadTipList } from "entities/Tip/model/services/loadTipList/loadTipList";
 
 interface AppLoaderProps {
     children?: ReactNode;
 }
 export const AppLoader = (props: AppLoaderProps) => {
     const dispatch = useDispatch<any>();
-    const isLoading = useSelector(getClothLoadingStatus);
+    const isClothLoading = useSelector(getClothLoadingStatus);
+    const isTipLoading = useSelector(getTipLoadingStatus);
     const [fontsLoaded] = useFonts({
         Lekton: require("shared/assets/fonts/Lekton-Bold.ttf"),
+        "IBM Plex Sans": require("shared/assets/fonts/IBMPlexSans-Regular.ttf"),
     });
     const {
         children,
@@ -20,9 +24,10 @@ export const AppLoader = (props: AppLoaderProps) => {
 
     useEffect(() => {
         dispatch(loadClothList());
+        dispatch(loadTipList());
     }, [dispatch]);
 
-    if (isLoading || !fontsLoaded) {
+    if (isClothLoading || !fontsLoaded || isTipLoading) {
         return (
             <Text>Loading...</Text>
         );

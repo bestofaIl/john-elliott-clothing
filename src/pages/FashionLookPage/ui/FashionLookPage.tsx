@@ -39,11 +39,18 @@ const FashionLookPage = () => {
     return (
         <View style={[styles.container, { paddingTop: insets.top }]}>
 
-            <View style={styles.temp}>
-                <View style={styles.pageTextContainer}>
+            <View style={styles.fashionContainer}>
+                {/* <View style={styles.pageTextContainer}> */}
+                {/*    <Text style={styles.pageText}>Fashion Look</Text> */}
+                {/* </View> */}
+                <View style={{ alignSelf: "flex-start" }}>
                     <Text style={styles.pageText}>Fashion Look</Text>
                 </View>
-                <View style={{ position: "absolute", right: "10%", top: "7%" }}>
+
+                <View style={{
+                    position: "absolute", alignSelf: "flex-end", top: 15,
+                }}
+                >
                     <AddFavorites color="#F36303" />
                 </View>
                 <FashionLook items={tabsState.FIRST ? yesterdayFashionList : todayFashionList} />
@@ -69,30 +76,32 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff",
         alignItems: "center",
-        // justifyContent: "space-between",
+        justifyContent: "center",
+        paddingHorizontal: "6%",
     },
-    temp: {
+    fashionContainer: {
         flex: 1,
         // backgroundColor: "green",
         position: "relative",
         width: "100%",
         alignItems: "center",
-        paddingHorizontal: 35,
-        borderColor: "black",
+        // paddingHorizontal: 35,
+        // borderColor: "black",
         // borderWidth: 1,
         overflow: "hidden",
     },
-    pageTextContainer: {
-        marginVertical: 20,
-        alignSelf: "flex-start",
-    },
+    // pageTextContainer: {
+    //     marginVertical: 20,
+    //     alignSelf: "flex-start",
+    // },
     pageText: {
         fontFamily: "Lekton",
         fontWeight: "700",
         fontSize: 16,
         letterSpacing: 2,
         textTransform: "capitalize",
-        color: "#f36303",
+        color: "#F36303",
+        marginBottom: 15,
     },
 });
 

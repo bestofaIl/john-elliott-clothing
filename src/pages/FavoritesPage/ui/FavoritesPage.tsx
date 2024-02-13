@@ -17,11 +17,14 @@ const FavoritesPage = () => {
                 source={require("shared/assets/images/favoritesBackGround.png")}
                 style={[styles.imageBackground, { paddingTop: insets.top }]}
             >
-                <View style={{ marginTop: 20 }}>
+                <View style={{
+                    flex: 1, width: "100%",
+                }}
+                >
                     <Text style={styles.pageText}>{route.name}</Text>
                     <FlatList
                         data={clothList}
-                        renderItem={({ item }) => <ClothCard img={item.img} />}
+                        renderItem={({ item }) => <ClothCard img={item.img} margin={10} />}
                         numColumns={2}
                         keyExtractor={(item) => item.id}
                         showsVerticalScrollIndicator={false}
@@ -41,6 +44,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "black",
+        paddingHorizontal: "5%",
     },
     pageText: {
         fontFamily: "Lekton",
@@ -50,7 +54,7 @@ const styles = StyleSheet.create({
         textTransform: "capitalize",
         color: "#F36303",
         marginBottom: 15,
-        paddingLeft: 10,
+        // paddingLeft: 10,
     },
 });
 

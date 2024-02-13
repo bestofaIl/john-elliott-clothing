@@ -3,6 +3,8 @@ import { ClothSchema } from "../types/cloth";
 import { loadClothList } from "../services/loadClothList/loadClothList";
 
 const initialState: ClothSchema = {
+    entities: [],
+    isLoading: false,
 };
 
 export const clothSlice = createSlice({
