@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 import { mockDataJs } from "shared/mockData/cloths";
-import { Cloth } from "../../types/cloth";
+import { Cloth } from "entities/Cloth";
 
 export const loadClothList = createAsyncThunk<Cloth[], void>(
     "cloth/loadClothList",
@@ -11,8 +10,7 @@ export const loadClothList = createAsyncThunk<Cloth[], void>(
             // if (!response.data) {
             //     throw new Error();
             // }
-            const mockTemp = mockDataJs as Cloth[];
-            return mockTemp;
+            return mockDataJs;
             // return response.data;
         } catch (e) {
             return thunkAPI.rejectWithValue(e);

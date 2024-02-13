@@ -1,82 +1,67 @@
 import {
+    Image,
     StyleSheet, Text, useWindowDimensions, View,
 } from "react-native";
-import FrontTab from "shared/assets/icons/FrontTab.svg";
-import { useFonts } from "expo-font";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useNavigation } from "@react-navigation/native";
+import { tabNames } from "shared/ui/Tab/Tab";
+import { TabsWidget } from "widgets/TabsWidget";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { getYesterdayFashion } from "entities/Cloth/model/selectors/getFashion/getYesterdayFashion";
+import { FashionLook } from "widgets/FashionLook";
+import { getTodayFashion } from "entities/Cloth/model/selectors/getFashion/getTodayFashion";
+import AddFavorites from "shared/assets/icons/AddFavorites.svg";
 
 const FashionLookPage = () => {
     const { width } = useWindowDimensions();
-    const [fontsLoaded] = useFonts({
-        Lekton: require("../../../shared/assets/fonts/Lekton-Bold.ttf"),
-    });
-    // const [isActive, setIsActive] = useState();
     const insets = useSafeAreaInsets();
     const proportionalNumber = 44 / 187;
     const tabContainerWidth = (width * 90) / 100;
     const tabWidth = Math.floor((tabContainerWidth * 54.4) / 100);
     const tabContainerHeight = proportionalNumber * tabWidth;
     const offset = ((tabContainerWidth * 9.35) / 100);
-    if (fontsLoaded) {
-        return (
-            <View style={[styles.container, { paddingTop: insets.top }]}>
 
-                <Text style={{ fontFamily: "Lekton" }}>Fashion Look</Text>
-                {/* <View style={[styles.tabsContainer, { width: tabContainerWidth }]}> */}
-                {/*    <View style={{ position: "relative", left: 0 }}> */}
-                {/*        <View style={styles.blockOne}> */}
-                {/*            <FrontTab color="#333333" width={tabWidth} height="44" viewBox={`0 0 ${tabContainerWidth} 44`} /> */}
-                {/*        </View> */}
-                {/*        <View style={{ */}
-                {/*            position: "relative", bottom: "75%", zIndex: 21, alignItems: "center", width: tabWidth, */}
-                {/*        }} */}
-                {/*        > */}
-                {/*            <Text style={{ color: "black", zIndex: 20 }}>Today</Text> */}
-                {/*        </View> */}
-                {/*    </View> */}
+    const yesterdayFashionList = useSelector(getYesterdayFashion);
+    const todayFashionList = useSelector(getTodayFashion);
 
-                {/*    <View style={{ */}
-                {/*        position: "relative", right: offset, */}
-                {/*    }} */}
-                {/*    > */}
-                {/*        <View style={styles.blockTwo}> */}
-                {/*            <FrontTab color="#555555" width={tabWidth} height="44" viewBox={`0 0 ${tabContainerWidth} 44`} /> */}
-                {/*        </View> */}
-                {/*        <View style={{ */}
-                {/*            position: "relative", bottom: "75%", alignItems: "center", width: tabWidth, */}
-                {/*        }} */}
-                {/*        > */}
-                {/*            <Text style={{ color: "black", zIndex: 20 }}>Yesterday</Text> */}
-                {/*        </View> */}
-                {/*    </View> */}
-                {/* </View> */}
-                <View style={[styles.tabsContainer, { width: tabContainerWidth, height: tabContainerHeight }]}>
-                    <View style={{ position: "relative", left: 0, zIndex: 5 }}>
-                        <FrontTab color="#333333" width="100%" height="100%" />
-                        <View style={{
-                            position: "relative", bottom: "75%", zIndex: 21, alignItems: "center", width: tabWidth,
-                        }}
-                        >
-                            <Text style={{ color: "black", zIndex: 20 }}>Today</Text>
-                        </View>
-                    </View>
+    const [tabsState, setTabsState] = useState<Record<tabNames, boolean>>({
+        [tabNames.left]: true,
+        [tabNames.right]: false,
+    });
+    const handleTabPress = (name: tabNames) => {
+        setTabsState({
+            [tabNames.right]: false,
+            [tabNames.left]: false,
+            [name]: true,
+        });
+    };
 
-                    <View style={{ position: "relative", right: offset }}>
-                        <FrontTab color="#555555" width="100%" height="100%" />
-                        <View style={{
-                            position: "relative", bottom: "75%", zIndex: 21, alignItems: "center", width: tabWidth,
-                        }}
-                        >
-                            <Text style={{ color: "black", zIndex: 20 }}>Yesterday</Text>
-                        </View>
-                    </View>
+    return (
+        <View style={[styles.container, { paddingTop: insets.top }]}>
+
+            <View style={styles.temp}>
+                <View style={styles.pageTextContainer}>
+                    <Text style={styles.pageText}>Fashion Look</Text>
                 </View>
-
+                <View style={{ position: "absolute", right: "10%", top: "7%" }}>
+                    <AddFavorites color="#F36303" />
+                </View>
+                <FashionLook items={tabsState.FIRST ? yesterdayFashionList : todayFashionList} />
             </View>
-        );
-    }
-    return <Text>loading...</Text>;
+
+            <TabsWidget
+                width={tabContainerWidth}
+                height={tabContainerHeight}
+                tabWidth={tabWidth}
+                offset={offset}
+                label={["Yesterday", "Today"]}
+                tabsState={tabsState}
+                handlePress={handleTabPress}
+                textColor="#FFFFFF"
+            />
+
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({
@@ -84,25 +69,30 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff",
         alignItems: "center",
-        justifyContent: "space-between",
+        // justifyContent: "space-between",
     },
-    tabsContainer: {
-        flexDirection: "row",
-        // position: "relative",
+    temp: {
+        flex: 1,
+        // backgroundColor: "green",
+        position: "relative",
+        width: "100%",
+        alignItems: "center",
+        paddingHorizontal: 35,
         borderColor: "black",
-        borderWidth: 0,
-    },
-    blockOne: {
-        backgroundColor: "green",
-        // position: "absolute",
-        // left: 0,
-        // zIndex: 2,
         // borderWidth: 1,
-        // borderColor: "red",
+        overflow: "hidden",
     },
-    blockTwo: {
-        // position: "absolute",
-        // right: 0,
+    pageTextContainer: {
+        marginVertical: 20,
+        alignSelf: "flex-start",
+    },
+    pageText: {
+        fontFamily: "Lekton",
+        fontWeight: "700",
+        fontSize: 16,
+        letterSpacing: 2,
+        textTransform: "capitalize",
+        color: "#f36303",
     },
 });
 

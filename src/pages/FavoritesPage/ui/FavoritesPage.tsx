@@ -1,8 +1,8 @@
 import {
-    FlatList, ImageBackground, ScrollView, StyleSheet, Text, View, Image,
+    FlatList, ImageBackground, StyleSheet, Text, View,
 } from "react-native";
 import { useSelector } from "react-redux";
-import { getCloth } from "entities/Cloth/model/selectors/getCloth/getCloth";
+import { getCloth } from "entities/Cloth/model/selectors/getClothList/getCloth";
 import { ClothCard } from "entities/Cloth";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRoute } from "@react-navigation/native";
@@ -11,7 +11,6 @@ const FavoritesPage = () => {
     const route = useRoute();
     const insets = useSafeAreaInsets();
     const clothList = useSelector(getCloth);
-    console.log(route.name);
     return (
         <View style={[styles.container]}>
             <ImageBackground
