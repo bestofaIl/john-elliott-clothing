@@ -2,9 +2,9 @@ import {
     StyleSheet, Text, TouchableWithoutFeedback, View,
 } from "react-native";
 import { ClothCard } from "entities/Cloth";
-import { Tip } from "entities/Tip/model/types/tip";
 import Close from "shared/assets/icons/Сlose.svg";
 import { Colors, Fonts } from "shared/constants";
+import { Tip } from "entities/Tip";
 
 interface TipCardProps extends Tip {
     onPress?: (id: string) => void;

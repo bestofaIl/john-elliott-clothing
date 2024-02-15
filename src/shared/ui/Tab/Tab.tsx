@@ -39,7 +39,7 @@ const Tab = ({
             >
                 <FrontTab color={color} width="100%" height="100%" />
                 <View style={[styles.textContainer, { width }]}>
-                    <Text style={{ color: labelColor, zIndex: 20, fontFamily: Fonts.LEKTON_BOLD }}>{label}</Text>
+                    <Text style={[styles.text, { color: labelColor }]}>{label}</Text>
                 </View>
             </View>
         </TouchableWithoutFeedback>
@@ -52,6 +52,10 @@ const styles = StyleSheet.create({
         bottom: "60%",
         zIndex: 21,
         alignItems: "center",
+    },
+    text: {
+        zIndex: 20,
+        fontFamily: Fonts.LEKTON_BOLD,
     },
 });
 

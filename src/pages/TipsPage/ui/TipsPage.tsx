@@ -2,13 +2,14 @@ import {
     ImageBackground, StyleSheet, Text, View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import TipCard from "entities/Tip/ui/TipCard/TipCard";
+
 import { useSelector } from "react-redux";
 import { getTipList } from "entities/Tip/model/selectors/getTipList/getTipList";
 import { useState } from "react";
 import { useRoute } from "@react-navigation/native";
 import { EmptyWarning } from "widgets/EmptyWarning";
 import { Colors, Fonts } from "shared/constants";
+import { TipCard } from "entities/Tip";
 
 const TipsPage = () => {
     const route = useRoute();

@@ -5,12 +5,13 @@ import { getClothLoadingStatus } from "entities/Cloth/model/selectors/getClothLi
 import { Text } from "react-native";
 import { useFonts } from "expo-font";
 import { getTipLoadingStatus } from "entities/Tip/model/selectors/getTipList/getTipList";
-import { loadTipList } from "entities/Tip/model/services/loadTipList/loadTipList";
+
 import { getCouponeLoadingStatus } from "entities/Coupone/model/selectors/getCouponeList/getCouponeList";
 import { loadCouponeList } from "entities/Coupone/model/services/loadCouponeList/loadCouponeList";
 import { Fonts } from "shared/constants";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { EmptyWarning } from "widgets/EmptyWarning";
+import { loadTipList } from "entities/Tip";
 
 interface AppLoaderProps {
     children?: ReactNode;
