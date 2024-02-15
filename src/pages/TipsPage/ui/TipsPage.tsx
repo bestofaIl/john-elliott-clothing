@@ -3,12 +3,12 @@ import {
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import TipCard from "entities/Tip/ui/TipCard/TipCard";
-import { Tip } from "entities/Tip/model/types/tip";
 import { useSelector } from "react-redux";
 import { getTipList } from "entities/Tip/model/selectors/getTipList/getTipList";
 import { useState } from "react";
 import { useRoute } from "@react-navigation/native";
 import { EmptyWarning } from "widgets/EmptyWarning";
+import { Colors, Fonts } from "shared/constants";
 
 const TipsPage = () => {
     const route = useRoute();
@@ -53,21 +53,17 @@ const styles = StyleSheet.create({
     },
     imageBackground: {
         flex: 1,
-        // alignItems: "center",
-        // justifyContent: "center",
-        backgroundColor: "black",
+        backgroundColor: Colors.BLACK,
         paddingHorizontal: "6%",
         paddingBottom: "5%",
     },
     pageText: {
-        fontFamily: "Lekton",
-        fontWeight: "700",
+        fontFamily: Fonts.LEKTON_BOLD,
         fontSize: 16,
         letterSpacing: 2,
         textTransform: "capitalize",
-        color: "#F36303",
+        color: Colors.PRIMARY,
         marginBottom: 15,
-        // paddingLeft: 10,
     },
 });
 

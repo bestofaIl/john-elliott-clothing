@@ -33,7 +33,9 @@
         {
           "fonts": [
             "./src/shared/assets/fonts/Lekton-Bold.ttf",
-            "./src/shared/assets/fonts/IBMPlexSans-Regular.ttf"
+            "./src/shared/assets/fonts/IBMPlexSans-Regular.ttf",
+            "./src/shared/assets/fonts/Lexend-Bold.ttf",
+            "./src/shared/assets/fonts/Lexend-Regular.ttf"
           ]
         }
       ]

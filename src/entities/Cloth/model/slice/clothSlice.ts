@@ -4,7 +4,7 @@ import { loadClothList } from "../services/loadClothList/loadClothList";
 
 const initialState: ClothSchema = {
     entities: [],
-    isLoading: false,
+    isLoading: true,
 };
 
 export const clothSlice = createSlice({

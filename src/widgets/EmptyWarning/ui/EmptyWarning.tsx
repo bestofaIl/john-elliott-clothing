@@ -1,6 +1,7 @@
 import {
     StyleSheet, Text, TouchableWithoutFeedback, View,
 } from "react-native";
+import { Colors, Fonts } from "shared/constants";
 
 interface EmptyWarningProps {
     title?: string;
@@ -32,23 +33,21 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     titleText: {
-        fontFamily: "IBM Plex Sans",
-        fontWeight: "400",
+        fontFamily: Fonts.IBM_PLEX_SANS_REGULAR,
         fontSize: 20,
-        color: "#000",
+        color: Colors.BLACK,
     },
     resetText: {
-        fontFamily: "Lekton",
-        fontWeight: "700",
+        fontFamily: Fonts.LEKTON_BOLD,
         fontSize: 16,
         letterSpacing: 2,
         textTransform: "capitalize",
-        color: "#F36303",
+        color: Colors.PRIMARY,
     },
     resetContainer: {
         paddingHorizontal: 30,
         paddingVertical: 15,
-        backgroundColor: "#555555",
+        backgroundColor: Colors.NEUTRAL_500,
         borderRadius: 10,
     },
 });

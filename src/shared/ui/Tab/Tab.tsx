@@ -2,6 +2,7 @@ import {
     StyleSheet, Text, TouchableWithoutFeedback, View,
 } from "react-native";
 import FrontTab from "shared/assets/icons/FrontTab.svg";
+import { Fonts } from "shared/constants";
 
 export enum TabColor {
     ACTIVE = "#333333",
@@ -38,7 +39,7 @@ const Tab = ({
             >
                 <FrontTab color={color} width="100%" height="100%" />
                 <View style={[styles.textContainer, { width }]}>
-                    <Text style={{ color: labelColor, zIndex: 20 }}>{label}</Text>
+                    <Text style={{ color: labelColor, zIndex: 20, fontFamily: Fonts.LEKTON_BOLD }}>{label}</Text>
                 </View>
             </View>
         </TouchableWithoutFeedback>
@@ -48,10 +49,9 @@ const Tab = ({
 const styles = StyleSheet.create({
     textContainer: {
         position: "relative",
-        bottom: "75%",
+        bottom: "60%",
         zIndex: 21,
         alignItems: "center",
-        fontFamily: "Lekton",
     },
 });
 

@@ -4,6 +4,7 @@ import {
 import { ClothCard } from "entities/Cloth";
 import { Tip } from "entities/Tip/model/types/tip";
 import Close from "shared/assets/icons/Сlose.svg";
+import { Colors, Fonts } from "shared/constants";
 
 interface TipCardProps extends Tip {
     onPress?: (id: string) => void;
@@ -21,12 +22,12 @@ const TipCard = ({
         <View style={styles.container}>
             <TouchableWithoutFeedback onPress={handlePress}>
                 <View style={styles.closeButton}>
-                    <Close />
+                    <Close color={Colors.PRIMARY} />
                 </View>
             </TouchableWithoutFeedback>
 
             <View style={styles.imageContainer}>
-                <ClothCard img={img} backgroundColor="#D9D9D9" />
+                <ClothCard img={img} backgroundColor={Colors.NEUTRAL_300} />
             </View>
             <View>
                 <Text style={styles.tipHeader}>{header}</Text>
@@ -41,11 +42,8 @@ const TipCard = ({
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // height: "100%",
-        backgroundColor: "#fff",
+        backgroundColor: Colors.WHITE,
         borderRadius: 28,
-        // borderWidth: 1,
-        // borderColor: "red",
         padding: 25,
         position: "relative",
     },
@@ -53,20 +51,18 @@ const styles = StyleSheet.create({
         marginBottom: 28,
     },
     tipHeader: {
-        fontFamily: "Lekton",
-        fontWeight: "700",
+        fontFamily: Fonts.LEKTON_BOLD,
         fontSize: 20,
         letterSpacing: 2,
         textTransform: "uppercase",
-        color: "#000",
+        color: Colors.BLACK,
         marginBottom: 28,
     },
     textNode: {
-        fontFamily: "IBM Plex Sans",
-        fontWeight: "400",
+        fontFamily: Fonts.IBM_PLEX_SANS_REGULAR,
         fontSize: 12,
         lineHeight: 17,
-        color: "#000",
+        color: Colors.BLACK,
     },
     closeButton: {
         position: "absolute",

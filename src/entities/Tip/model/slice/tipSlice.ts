@@ -4,7 +4,7 @@ import { loadTipList } from "entities/Tip/model/services/loadTipList/loadTipList
 
 const initialState: TipSchema = {
     entities: [],
-    isLoading: false,
+    isLoading: true,
 };
 
 export const tipSlice = createSlice({

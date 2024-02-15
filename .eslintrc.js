@@ -43,7 +43,8 @@ module.exports = {
         "react/no-unstable-nested-components": 0, // fix later
         "global-require": 0,
         "@typescript-eslint/no-var-requires": 0,
-        "import/no-dynamic-require": 0
+        "import/no-dynamic-require": 0,
+        "arrow-body-style": 0,
     },
     globals: {
         __IS_DEV__: true,

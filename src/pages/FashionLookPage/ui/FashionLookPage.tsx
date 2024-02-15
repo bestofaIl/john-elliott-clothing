@@ -11,6 +11,7 @@ import { getYesterdayFashion } from "entities/Cloth/model/selectors/getFashion/g
 import { FashionLook } from "widgets/FashionLook";
 import { getTodayFashion } from "entities/Cloth/model/selectors/getFashion/getTodayFashion";
 import AddFavorites from "shared/assets/icons/AddFavorites.svg";
+import { Colors, Fonts } from "shared/constants";
 
 const FashionLookPage = () => {
     const { width } = useWindowDimensions();
@@ -51,7 +52,7 @@ const FashionLookPage = () => {
                     position: "absolute", alignSelf: "flex-end", top: 15,
                 }}
                 >
-                    <AddFavorites color="#F36303" />
+                    <AddFavorites color={Colors.PRIMARY} />
                 </View>
                 <FashionLook items={tabsState.FIRST ? yesterdayFashionList : todayFashionList} />
             </View>
@@ -64,7 +65,7 @@ const FashionLookPage = () => {
                 label={["Yesterday", "Today"]}
                 tabsState={tabsState}
                 handlePress={handleTabPress}
-                textColor="#FFFFFF"
+                textColor={Colors.WHITE}
             />
 
         </View>
@@ -74,33 +75,25 @@ const FashionLookPage = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
+        backgroundColor: Colors.WHITE,
         alignItems: "center",
         justifyContent: "center",
         paddingHorizontal: "6%",
     },
     fashionContainer: {
         flex: 1,
-        // backgroundColor: "green",
         position: "relative",
         width: "100%",
         alignItems: "center",
-        // paddingHorizontal: 35,
-        // borderColor: "black",
-        // borderWidth: 1,
         overflow: "hidden",
     },
-    // pageTextContainer: {
-    //     marginVertical: 20,
-    //     alignSelf: "flex-start",
-    // },
+
     pageText: {
-        fontFamily: "Lekton",
-        fontWeight: "700",
+        fontFamily: Fonts.LEKTON_BOLD,
         fontSize: 16,
         letterSpacing: 2,
         textTransform: "capitalize",
-        color: "#F36303",
+        color: Colors.PRIMARY,
         marginBottom: 15,
     },
 });

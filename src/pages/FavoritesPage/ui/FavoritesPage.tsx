@@ -6,6 +6,7 @@ import { getCloth } from "entities/Cloth/model/selectors/getClothList/getCloth";
 import { ClothCard } from "entities/Cloth";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRoute } from "@react-navigation/native";
+import { Colors, Fonts } from "shared/constants";
 
 const FavoritesPage = () => {
     const route = useRoute();
@@ -47,14 +48,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: "5%",
     },
     pageText: {
-        fontFamily: "Lekton",
-        fontWeight: "700",
+        fontFamily: Fonts.LEKTON_BOLD,
         fontSize: 16,
         letterSpacing: 2,
         textTransform: "capitalize",
-        color: "#F36303",
+        color: Colors.PRIMARY,
         marginBottom: 15,
-        // paddingLeft: 10,
     },
 });
 
