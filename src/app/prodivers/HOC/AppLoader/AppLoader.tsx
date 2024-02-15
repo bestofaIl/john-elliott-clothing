@@ -10,6 +10,7 @@ import { getCouponeLoadingStatus } from "entities/Coupone/model/selectors/getCou
 import { loadCouponeList } from "entities/Coupone/model/services/loadCouponeList/loadCouponeList";
 import { Fonts } from "shared/constants";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { EmptyWarning } from "widgets/EmptyWarning";
 
 interface AppLoaderProps {
     children?: ReactNode;
@@ -40,7 +41,7 @@ export const AppLoader = (props: AppLoaderProps) => {
 
     if (!dataLoaded) {
         return (
-            <Text>Loading...</Text>
+            <EmptyWarning title="Data loading..." />
         );
     }
     return children;

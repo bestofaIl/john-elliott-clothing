@@ -6,7 +6,7 @@ import { Colors, Fonts } from "shared/constants";
 interface EmptyWarningProps {
     title?: string;
     resetLabel?: string;
-    reset: () => void;
+    reset?: () => void;
 }
 const EmptyWarning = ({ title, resetLabel, reset }: EmptyWarningProps) => {
     const handlePress = () => {
@@ -16,12 +16,18 @@ const EmptyWarning = ({ title, resetLabel, reset }: EmptyWarningProps) => {
     };
     return (
         <View style={styles.container}>
-            <Text style={styles.titleText}>{title || "Out of data!"}</Text>
-            <TouchableWithoutFeedback onPress={handlePress}>
-                <View style={styles.resetContainer}>
-                    <Text style={styles.resetText}>{resetLabel || "Reset"}</Text>
-                </View>
-            </TouchableWithoutFeedback>
+            {reset ? (
+                <>
+                    <Text style={styles.titleText}>{title || "Out of data!"}</Text>
+                    <TouchableWithoutFeedback onPress={handlePress}>
+                        <View style={styles.resetContainer}>
+                            <Text style={styles.resetText}>{resetLabel || "Reset"}</Text>
+                        </View>
+                    </TouchableWithoutFeedback>
+                </>
+            ) : (
+                <Text style={styles.defaultText}>{title || "Out of data!"}</Text>
+            )}
         </View>
     );
 };
@@ -49,6 +55,10 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         backgroundColor: Colors.NEUTRAL_500,
         borderRadius: 10,
+    },
+    defaultText: {
+        fontSize: 20,
+        color: Colors.BLACK,
     },
 });
 
