@@ -1,6 +1,5 @@
 import {
-    Image,
-    StyleSheet, Text, useWindowDimensions, View,
+    StyleSheet, useWindowDimensions, View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { tabNames } from "shared/ui/Tab/Tab";
@@ -11,16 +10,20 @@ import { getYesterdayFashion } from "entities/Cloth/model/selectors/getFashion/g
 import { FashionLook } from "widgets/FashionLook";
 import { getTodayFashion } from "entities/Cloth/model/selectors/getFashion/getTodayFashion";
 import AddFavorites from "shared/assets/icons/AddFavorites.svg";
-import { Colors, Fonts } from "shared/constants";
+import { Colors, Constants, Sizes } from "shared/constants";
+import { useRoute } from "@react-navigation/native";
+import HeaderPage from "shared/ui/HeaderPage/HeaderPage";
+import OuterContainer from "shared/ui/OuterContainer/OuterContainer";
 
 const FashionLookPage = () => {
+    const route = useRoute();
     const { width } = useWindowDimensions();
     const insets = useSafeAreaInsets();
-    const proportionalNumber = 44 / 187;
-    const tabContainerWidth = (width * 90) / 100;
-    const tabWidth = Math.floor((tabContainerWidth * 54.4) / 100);
-    const tabContainerHeight = proportionalNumber * tabWidth;
-    const offset = ((tabContainerWidth * 9.35) / 100);
+
+    const tabContainerWidth = (width * Constants.TAB_CONTAINER_WIDTH_FRACTION) / 100;
+    const tabWidth = Math.floor((tabContainerWidth * Constants.TAB_WIDTH_FRACTION) / 100);
+    const tabContainerHeight = Constants.PROPORTIONAL_COEFFICIENT * tabWidth;
+    const offset = ((tabContainerWidth * Constants.TAB_OFFSET_FRACTION) / 100);
 
     const yesterdayFashionList = useSelector(getYesterdayFashion);
     const todayFashionList = useSelector(getTodayFashion);
@@ -38,14 +41,10 @@ const FashionLookPage = () => {
     };
 
     return (
-        <View style={[styles.container, { paddingTop: insets.top }]}>
-
+        <OuterContainer backgroundColor={Colors.WHITE} paddingHorizontal={Sizes.paddingSmall} paddingTop={insets.top}>
             <View style={styles.fashionContainer}>
-                {/* <View style={styles.pageTextContainer}> */}
-                {/*    <Text style={styles.pageText}>Fashion Look</Text> */}
-                {/* </View> */}
                 <View style={{ alignSelf: "flex-start" }}>
-                    <Text style={styles.pageText}>Fashion Look</Text>
+                    <HeaderPage>{route.name}</HeaderPage>
                 </View>
 
                 <View style={{
@@ -67,34 +66,17 @@ const FashionLookPage = () => {
                 handlePress={handleTabPress}
                 textColor={Colors.WHITE}
             />
-
-        </View>
+        </OuterContainer>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: Colors.WHITE,
-        alignItems: "center",
-        justifyContent: "center",
-        paddingHorizontal: "6%",
-    },
     fashionContainer: {
         flex: 1,
         position: "relative",
         width: "100%",
         alignItems: "center",
         overflow: "hidden",
-    },
-
-    pageText: {
-        fontFamily: Fonts.LEKTON_BOLD,
-        fontSize: 16,
-        letterSpacing: 2,
-        textTransform: "capitalize",
-        color: Colors.PRIMARY,
-        marginBottom: 15,
     },
 });
 
